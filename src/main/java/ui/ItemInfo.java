@@ -9,14 +9,14 @@ public class ItemInfo {
     private String name;
     private String description;
     private String category;
-    private int quantity;
+    private boolean inStorage;
 
-    public ItemInfo(int id, String name, String description, String category, int quantity) {
+    public ItemInfo(int id, String name, String description, String category, boolean inStorage) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
-        this.quantity = quantity;
+        this.inStorage = inStorage;
     }
 
     public int getId() {
@@ -46,14 +46,7 @@ public class ItemInfo {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
     public boolean inStock() {
-        return quantity > 0;
+        return inStorage;
     }
 }

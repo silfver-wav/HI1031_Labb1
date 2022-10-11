@@ -13,7 +13,7 @@ public class Item {
     private int id;
     private String category;
 
-    private int quantity;
+    private boolean inStorage;
 
 
     static public Collection searchItems(String group) {
@@ -23,12 +23,12 @@ public class Item {
     static public Item getItem(int id) { return ItemDB.getItem(id);}
 
 
-    protected Item(int id, String name, String desc, String category, int quantity) {
+    protected Item(int id, String name, String desc, String category, boolean inStorage) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.category = category;
-        this.quantity = quantity;
+        this.inStorage = inStorage;
     }
 
     public int getId() {
@@ -63,11 +63,7 @@ public class Item {
         this.category = category;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public boolean getinStorage() {
+        return inStorage;
     }
 }

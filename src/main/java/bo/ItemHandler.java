@@ -17,13 +17,13 @@ public class ItemHandler {
         ArrayList<ItemInfo> items = new ArrayList<>();
         for(Iterator it = c.iterator(); it.hasNext();) {
             Item item = (Item) it.next();
-            items.add(new ItemInfo(item.getId(), item.getName(),item.getDesc(),null,item.getQuantity()));
+            items.add(new ItemInfo(item.getId(), item.getName(),item.getDesc(),null,item.getinStorage()));
         }
         return items;
     }
 
     public static ItemInfo getItem(int itemId) {
         Item item = Item.getItem(itemId);
-        return new ItemInfo(item.getId(), item.getName(), item.getDesc(),null, item.getQuantity());
+        return new ItemInfo(item.getId(), item.getName(), item.getDesc(),null, item.getinStorage());
     }
 }
