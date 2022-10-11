@@ -1,31 +1,18 @@
-package bo;
+package ui;
 
-import db.UserDB;
-
-import java.util.Collection;
-
-public class User {
+public class UserInfo {
     private String username;
     private String name;
     private String email;
     private String password;
     private int access;
 
-    static public boolean editUserAccess(String username, int access) { return UserDB.editUserAccess(username, access);}
-    static public Collection getUsers() { return UserDB.getUsers();}
-    static public User searchUser(String username) { return UserDB.searchUser(username); }
-    static public boolean addUser(User user) { return UserDB.addUser(user.getUsername(), user.getName(), user.getEmail(), user.getPassword(), user.access); }
-
-    protected User(String username, String name, String email, String password, int access) {
+    public UserInfo(String username, String name, String email, String password, int access) {
         this.username = username;
         this.name = name;
         this.email = email;
         this.password = password;
         this.access = access;
-    }
-
-    public User(String username) {
-        this.username = username;
     }
 
     public String getUsername() {
@@ -66,5 +53,9 @@ public class User {
 
     public void setAccess(int access) {
         this.access = access;
+    }
+
+    public boolean isEmpty() {
+        return username==null;
     }
 }

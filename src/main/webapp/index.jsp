@@ -1,3 +1,10 @@
+<%@ page import="ui.ShoppingCartServlet" %>
+<%@ page import="bo.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ui.ItemInfo" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="bo.Order" %>
+<%@ page import="ui.UserInfo" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -14,62 +21,36 @@
         <header>
             <!--Nav-->
             <div class="nav container">
-                <a href="#" class="logo">Ecommerce</a>
-                <!-- Cart-Icon -->
-                <i class='bx bx-shopping-bag' id="cart-icon"></i>
-                <% let cartIcon = document.querySelector("#cart-icon"); %>
-                <!--Cart-->
-                <div class="cart">
-                    <h2 class="cart-title">Your Cart</h2>
-                    <!--Content-->
-                    <div class="cart-content">
+                <a href="#" class="logo">Panda Shop</a>
 
-                        <div class="cart-box">
-                            <div class="detail-box">
-                                <div class="cart-product-title">Apple</div>
-                                <div class="cart-price">$25</div>
-                                <input type="number" value="1" class="cart-quantity">
-                            </div>
-                            <!--Remove Cart-->
-                            <i class='bx bxs-trash-alt cart-remove' ></i>
-                        </div>
-                    </div>
-                    <!--Total-->
-                    <div class="total">
-                        <div class="total-title">Total</div>
-                        <div class="total-price">$0</div>
-                    </div>
-                    <!--Buy Button-->
-                    <button type="button" class="btn-buy">Buy</button>
-                    <!--Cart Close-->
-                    <i class="bx bx-x" id="close-cart"></i>
-                </div>
+                <!--<i type="button" class='bx bx-shopping-bag' id="cart-icon" onclick="document.getElementById('cartDiv').style.display='block'"></i>-->
+
+                <!--Shop Redirect-->
+                <a href = "${pageContext.request.contextPath}/item-servlet?action=LIST">
+                    <i type="button" class='bx bx-store' id="store-icon"></i>
+                </a>
+
+                <!--Cart Redirect-->
+                <a href = "${pageContext.request.contextPath}/cart-servlet?action=LIST">
+                    <i type="button" class='bx bx-shopping-bag' id="cart-icon"></i>
+                </a>
+
+                <a href="login.jsp">Login</a>
+
             </div>
         </header>
-        <!--Shop -->
-        <section class="shop container">
-            <h2 class="section-title"> Shop Products</h2>
-            <divGif>
-                <iframe src="https://giphy.com/embed/bRJRe4SUFyp2w" alt="" class="giphy"></iframe>
-            </divGif>
 
-            <!--Content-->
-            <div class="product-box">
-                <h2 class="product-title"> apple </h2>
-                <p class="description">Red apples from southern Sweden</p>
-                <span class="price">$25</span>
-                <i class="bx bx-shopping-bag add-cart"></i>
-            </div>
+        <section class="shop container">
+        <% HttpSession session1 = request.getSession();
+            UserInfo user = (UserInfo) session1.getAttribute("user");
+            if (user != null) {
+                if (user.getAccess() == 3) {
+        %>
+        <a href = "${pageContext.request.contextPath}/user-servlet?action=LIST" >
+            <i type="button" >Admin Page </i>
+        </a>
+        <% } }%>
         </section>
 
-
-        <h1><%= "Web Shop" %>
-
-        </h1>
-
-
-
-        <br/>
-            <a href="hello-servlet">Web Cart</a>
     </body>
 </html>

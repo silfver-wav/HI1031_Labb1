@@ -1,12 +1,23 @@
 package ui;
 
 public class ItemInfo {
+
+    private int id;
     private String name;
     private String description;
+    private String category;
+    private int quantity;
 
-    public ItemInfo(String name, String description) {
+    public ItemInfo(int id, String name, String description, String category, int quantity) {
+        this.id = id;
         this.name = name;
         this.description = description;
+        this.category = category;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -23,5 +34,23 @@ public class ItemInfo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public boolean inStock() {
+        return quantity > 0;
     }
 }

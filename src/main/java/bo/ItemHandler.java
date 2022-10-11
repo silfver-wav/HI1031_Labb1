@@ -5,15 +5,21 @@ import ui.ItemInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class ItemHandler {
-    public static Collection<ItemInfo> getItemWithGroup(String s) {
-        Collection c = Item.searchItems(s);
-        ArrayList<ItemInfo> items = new ArrayList<ItemInfo>();
-        for (Iterator it = c.iterator(); it.hasNext();) {
+    public static List<ItemInfo> getItems(String group) {
+        Collection c = Item.searchItems(group);
+        ArrayList<ItemInfo> items = new ArrayList<>();
+        for(Iterator it = c.iterator(); it.hasNext();) {
             Item item = (Item) it.next();
-            items.add(new ItemInfo(item.getName(), item.getDesc()));
+            items.add(new ItemInfo(item.getId(), item.getName(),item.getDesc(),null,item.getQuantity()));
         }
         return items;
+    }
+
+    public static ItemInfo getItem(int itemId) {
+        Item item = Item.getItem(itemId);
+        return new ItemInfo(item.getId(), item.getName(), item.getDesc(),null, item.getQuantity());
     }
 }

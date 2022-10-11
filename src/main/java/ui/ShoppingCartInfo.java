@@ -6,27 +6,31 @@ import bo.User;
 import java.util.List;
 
 public class ShoppingCartInfo {
-    private User user;
-    private List<Item> items;
+    private UserInfo user;
+    private List<ItemInfo> items;
 
-    public ShoppingCartInfo(User user, List<Item> items) {
+    public ShoppingCartInfo(UserInfo user, List<ItemInfo> items) {
         this.user = user;
         this.items = items;
     }
 
-    public User getUser() {
+    public UserInfo getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserInfo user) {
         this.user = user;
     }
 
-    public List<Item> getItems() {
+    public List<ItemInfo> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<ItemInfo> items) {
         this.items = items;
+    }
+
+    public void addItem(ItemInfo item) {
+        this.items.add(item);
     }
 }
