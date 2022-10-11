@@ -4,6 +4,9 @@ import db.UserDB;
 
 import java.util.Collection;
 
+/**
+ * A representation of a user
+ */
 public class User {
     private String username;
     private String name;

@@ -5,6 +5,9 @@ import bo.User;
 
 import java.util.List;
 
+/**
+ * A representation of a shopping cart information
+ */
 public class ShoppingCartInfo {
     private UserInfo user;
     private List<ItemInfo> items;

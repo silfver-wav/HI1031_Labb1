@@ -1,5 +1,8 @@
 package ui;
 
+/**
+ * A representation of an item information
+ */
 public class ItemInfo {
 
     private int id;

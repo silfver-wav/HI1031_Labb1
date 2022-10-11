@@ -6,14 +6,23 @@ import java.sql.*;
 import java.util.Collection;
 import java.util.Vector;
 
+
+/**
+ * A representation of an item database
+ */
 public class ItemDB extends bo.Item{
 
+
+    /**
+     * Search for an item in a specific item group
+     * @param item_group the item group to search for
+     * @return a collection of items
+     */
     public static Collection searchItem(String item_group) {
         Vector v = new Vector();
         try (Connection con = DBManager.getConnection()){
             Statement st = con.createStatement();
             ResultSet rs = null;
-            System.out.println("connected");
             if (item_group.equals("none"))
                 rs = st.executeQuery("SELECT * from item"); // lägg till spefik group
             else
@@ -34,6 +43,11 @@ public class ItemDB extends bo.Item{
     }
 
 
+    /**
+     * Search for an item by id
+     * @param id the id of the item
+     * @return the item from database
+     */
     public static ItemDB getItem(int id) {
         ItemDB item = null;
         try (Connection con = DBManager.getConnection()) {

@@ -8,6 +8,10 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
+/**
+ * A representation of a login servlet
+ */
 @WebServlet(name = "LoginServlet", urlPatterns = "/login-servlet")
 public class LoginServlet extends HttpServlet {
 

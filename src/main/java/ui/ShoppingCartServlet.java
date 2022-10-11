@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * A representation of a shopping cart servlet
+ */
 @WebServlet(name = "CartServlet", urlPatterns = "/cart-servlet")
 public class ShoppingCartServlet extends HttpServlet {
 

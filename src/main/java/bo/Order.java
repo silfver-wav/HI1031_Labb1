@@ -4,12 +4,15 @@ import db.OrderDB;
 
 import java.util.List;
 
+/**
+ * A representation of an order
+ */
 public class Order {
     private int id;
     private String username;
     private List<Integer> items;
 
-    static public Order getShoppingCart(String username) { return OrderDB.getOrderByUsername(username); }
+    static public Order getOrder(String username) { return OrderDB.getOrderByUsername(username); }
     static public boolean addOrder(String username, List<Integer> items) {return OrderDB.addOrderToDatabase(username, items); }
 
     protected Order(int id, String username, List<Integer> items) {

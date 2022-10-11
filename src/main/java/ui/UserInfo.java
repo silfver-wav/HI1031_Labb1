@@ -1,5 +1,9 @@
 package ui;
 
+
+/**
+ * A representation of user information
+ */
 public class UserInfo {
     private String username;
     private String name;

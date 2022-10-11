@@ -18,6 +18,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * A representation of a user servlet
+ */
 @WebServlet(name = "UserServlet", urlPatterns = "/user-servlet")
 public class UserServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

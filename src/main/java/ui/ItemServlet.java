@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A representation of a item servlet
+ */
 @WebServlet(name = "itemServlet", value = "/item-servlet")
 public class ItemServlet extends HttpServlet {
 

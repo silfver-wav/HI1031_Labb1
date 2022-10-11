@@ -2,6 +2,9 @@ package ui;
 
 import java.util.List;
 
+/**
+ * A representation of an order information
+ */
 public class OrderInfo {
 
     private int id;

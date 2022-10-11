@@ -8,6 +8,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * A representation of a user handler
+ */
 public class UserHandler {
     public static UserInfo getUser(String username) {
         User user = User.searchUser(username);

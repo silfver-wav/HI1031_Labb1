@@ -8,13 +8,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-// Ta bort hela klassen och gör det till order
+
+/**
+ * A representation of an order database
+ */
 
 public class OrderDB extends Order {
 
 
+    /**
+     * Search for an order by username
+     * @param username the username
+     * @return the order
+     */
     public static OrderDB getOrderByUsername(String username) {
-        OrderDB cart = null;
+        OrderDB order = null;
         try (Connection con = DBManager.getConnection()) {
             String sql = "SELECT * FROM order_T WHERE user='" + username + "'";
             PreparedStatement prepState = con.prepareStatement(sql);
@@ -25,19 +33,24 @@ public class OrderDB extends Order {
                 String user = rs.getString("user");
 
                 List<Integer> items = getItemIds(id);
-                cart = new OrderDB(id, user, items);
+                order = new OrderDB(id, user, items);
             }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return cart;
+        return order;
     }
 
-    private static List<Integer> getItemIds(int OrderId) {
+    /**
+     * Search for items by id
+     * @param orderId the id of the order
+     * @return a list of items by id
+     */
+    private static List<Integer> getItemIds(int orderId) {
         List<Integer> itemIds = new ArrayList<>();
         try (Connection con = DBManager.getConnection()) {
-            String sql = "SELECT idItem FROM item_order_T WHERE idOrder='" +OrderId+ "'";
+            String sql = "SELECT idItem FROM item_order_T WHERE idOrder='" +orderId+ "'";
             PreparedStatement prepState = con.prepareStatement(sql);
             ResultSet rs = prepState.executeQuery(sql);
 
@@ -51,6 +64,12 @@ public class OrderDB extends Order {
         return itemIds;
     }
 
+    /**
+     * Add an order to the database within a transaction - using username and list of item ids
+     * @param username the username
+     * @param itemIds item ids
+     * @return true if the order was added | false if the order was unsuccessful
+     */
     public static boolean addOrderToDatabase(String username, List<Integer> itemIds) {
         boolean rs = false;
         try (Connection con = DBManager.getConnection()) {
@@ -74,6 +93,8 @@ public class OrderDB extends Order {
         return rs;
     }
 
+
+    ///////////////////////////////// PRIVATE METHODS /////////////////////////////////
     private static int addOrder(String username) {
 
         int orderId = 0;

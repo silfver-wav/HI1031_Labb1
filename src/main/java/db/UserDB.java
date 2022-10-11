@@ -4,8 +4,15 @@ import java.sql.*;
 import java.util.Collection;
 import java.util.Vector;
 
+/**
+ * A representation of a user database
+ */
 public class UserDB extends bo.User {
 
+    /**
+     * Search for users
+     * @return a collection of users
+     */
     public static Collection getUsers() {
         Vector v = new Vector();
         try (Connection con = DBManager.getConnection()){
@@ -26,6 +33,12 @@ public class UserDB extends bo.User {
 
         return v;
     }
+
+    /**
+     * Search for user by username
+     * @param username the username
+     * @return the user
+     */
     public static UserDB searchUser(String username) {
 
         UserDB user = null;
@@ -48,6 +61,16 @@ public class UserDB extends bo.User {
         }
         return user;
     }
+
+    /**
+     * Add user to the database using username, name, email, password and access-level
+     * @param username the username
+     * @param name the name
+     * @param email the email
+     * @param password the password
+     * @param access the access-level of the user
+     * @return true if user was added | false if the user was not added
+     */
     public static boolean addUser(String username, String name, String email, String password, int access) {
         try (Connection conn = DBManager.getConnection()){
 
@@ -70,6 +93,12 @@ public class UserDB extends bo.User {
         }
     }
 
+    /**
+     * Edit the access level of a user using username and the new access level
+     * @param username the username
+     * @param access the access level
+     * @return true if user was updated successfully | false if the user was not updated
+     */
     public static boolean editUserAccess(String username, int access) {
         try(Connection conn = DBManager.getConnection()) {
 
@@ -90,6 +119,13 @@ public class UserDB extends bo.User {
         return false;
     }
 
+    /**
+     * Update a user in the database using username, name, email and password
+     * @param username the username
+     * @param name the name
+     * @param email the email
+     * @param password the password
+     */
     public static void updateUser(String username, String name, String email, String password) {
 
         try(Connection conn = DBManager.getConnection()) {
@@ -111,6 +147,10 @@ public class UserDB extends bo.User {
         }
     }
 
+    /**
+     * Delete a user using username
+     * @param username the username
+     */
     public static void deleteUser(String username) {
 
         try(Connection conn = DBManager.getConnection()) {

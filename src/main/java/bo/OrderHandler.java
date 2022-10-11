@@ -8,9 +8,12 @@ import ui.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A representation of an order handler
+ */
 public class OrderHandler {
     public static OrderInfo getOrder(String username) {
-        Order order = Order.getShoppingCart(username);
+        Order order = Order.getOrder(username);
         return new OrderInfo(order.getId(), order.getUser(), order.getItems());
     }
 

@@ -4,6 +4,9 @@ import db.ItemDB;
 
 import java.util.Collection;
 
+/**
+ * A representation of an item
+ */
 public class Item {
     private String name;
     private String desc;

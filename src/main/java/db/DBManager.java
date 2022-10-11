@@ -6,6 +6,10 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+
+/**
+ * A representation of a database manager
+ */
 public class DBManager {
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource ds;
