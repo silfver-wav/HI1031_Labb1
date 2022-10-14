@@ -1,6 +1,5 @@
 package ui;
 
-
 /**
  * A representation of user information
  */

@@ -168,16 +168,6 @@ public class UserDB extends bo.User {
         }
     }
 
-
-
-  /*
-    public static void main(String[] args) {
-        System.out.println("here");
-        searchUser("linussilfver");
-        System.out.println("here2");
-    }
-   */
-
     protected UserDB(String username, String name, String email, String password, int access) {
         super(username, name, email, password, access);
     }

@@ -3,7 +3,6 @@ package bo;
 import db.UserDB;
 
 import java.util.Collection;
-
 /**
  * A representation of a user
  */

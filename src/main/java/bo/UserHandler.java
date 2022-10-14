@@ -1,13 +1,10 @@
 package bo;
 
-import ui.ItemInfo;
 import ui.UserInfo;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-
 
 /**
  * A representation of a user handler

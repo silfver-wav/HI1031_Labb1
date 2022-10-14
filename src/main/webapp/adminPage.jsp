@@ -34,7 +34,7 @@
 
   <!--Shop -->
   <section class="shop container">
-    <h2 class="section-title"> Shop Products</h2>
+    <h2 class="section-title">Users</h2>
     <!--Content-->
     <%
       session = request.getSession();
@@ -54,8 +54,8 @@
         Admin: <input type="radio" name="access" value="admin" type="checkbox" checked>
         <button type="submit" name="username" value=<%=user.getUsername()%>>Submit</button>
       </form>
-      <% } %>
     </div>
+    <% } %>
     <% } %>
 
   </section>

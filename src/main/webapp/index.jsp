@@ -21,7 +21,7 @@
         <header>
             <!--Nav-->
             <div class="nav container">
-                <a href="#" class="logo">Panda Shop</a>
+                <a href="#" class="logo">E-Shop</a>
 
                 <!--<i type="button" class='bx bx-shopping-bag' id="cart-icon" onclick="document.getElementById('cartDiv').style.display='block'"></i>-->
 
@@ -40,17 +40,34 @@
             </div>
         </header>
 
-        <section class="shop container">
-        <% HttpSession session1 = request.getSession();
-            UserInfo user = (UserInfo) session1.getAttribute("user");
-            if (user != null) {
-                if (user.getAccess() == 3) {
-        %>
-        <a href = "${pageContext.request.contextPath}/user-servlet?action=LIST" >
-            <i type="button" >Admin Page </i>
-        </a>
-        <% } }%>
-        </section>
+        <style>
+            body {
+                background-image: url(https://images.unsplash.com/photo-1446034295857-c39f8844fad4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+        </style>
+
+
+
+        <div class="middle">
+               <h1>Welcome</h1>
+        </div>
+
+
+            <section class="shop container">
+                <% session = request.getSession();
+                    UserInfo user = (UserInfo) session.getAttribute("user");
+                    if (user != null) {
+                        System.out.println(user.getUsername());
+                        if (user.getAccess() == 3) {
+                %>
+                <a href = "${pageContext.request.contextPath}/user-servlet?action=LIST" >
+                    <i type="button" >Admin Page </i>
+                </a>
+                <% } }%>
+            </section>
 
     </body>
 </html>

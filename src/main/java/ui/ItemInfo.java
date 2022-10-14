@@ -46,6 +46,7 @@ public class ItemInfo {
     public void setCategory(String category) {
         this.category = category;
     }
+
     public boolean inStock() {
         return inStorage;
     }

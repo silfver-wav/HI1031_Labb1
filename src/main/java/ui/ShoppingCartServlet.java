@@ -2,6 +2,7 @@ package ui;
 
 import bo.ItemHandler;
 import bo.OrderHandler;
+import db.StorageDB;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -35,9 +36,6 @@ public class ShoppingCartServlet extends HttpServlet {
             case "LIST":
                 getShoppingCart(request, response);
                 break;
-            case "REMOVE":
-                removeItem(request, response);
-                break;
             case "PUT":
                 doPost(request,response);
             default:
@@ -51,8 +49,6 @@ public class ShoppingCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-
-
         switch(action) {
 
             case "PUT":
@@ -60,6 +56,9 @@ public class ShoppingCartServlet extends HttpServlet {
                 break;
             case "INSERT":
                 createOrder(request, response);
+                break;
+            case "REMOVE":
+                removeItem(request, response);
                 break;
             default:
                 break;
@@ -123,15 +122,14 @@ public class ShoppingCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ShoppingCartInfo cart = (ShoppingCartInfo) session.getAttribute("cart");
 
-        String idstr = (String) request.getAttribute("itemId");
-        int id = Integer.parseInt(idstr);
+        ItemInfo item = (ItemInfo) session.getAttribute("Item");
+        System.out.println("Item: "+item.getName());
 
         List<ItemInfo> items = cart.getItems();
-        Iterator<ItemInfo> it = items.iterator();
-        while (it.hasNext()) {
-            ItemInfo item = it.next();
-            if (item.getId() == id) {
-                cart.getItems().remove(item);
+
+        for(int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == item.getId()) {
+                cart.getItems().remove(i);
                 break;
             }
         }

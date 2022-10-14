@@ -1,17 +1,13 @@
 package db;
 
-import bo.Item;
-
 import java.sql.*;
 import java.util.Collection;
 import java.util.Vector;
-
 
 /**
  * A representation of an item database
  */
 public class ItemDB extends bo.Item{
-
 
     /**
      * Search for an item in a specific item group
@@ -23,6 +19,7 @@ public class ItemDB extends bo.Item{
         try (Connection con = DBManager.getConnection()){
             Statement st = con.createStatement();
             ResultSet rs = null;
+            System.out.println("connected");
             if (item_group.equals("none"))
                 rs = st.executeQuery("SELECT * from item"); // lägg till spefik group
             else
@@ -32,16 +29,15 @@ public class ItemDB extends bo.Item{
                 int i = rs.getInt("idItem");
                 String name = rs.getString("name");
                 String desc = rs.getString("desc");
-                int quantity = rs.getInt("quantity");
+                boolean inStorage = StorageDB.getStorageByItemId(i);
 
-                v.addElement(new ItemDB(i, name, desc, quantity));
+                v.addElement(new ItemDB(i, name, desc, inStorage));
             }
         } catch (SQLException e) {
             e.printStackTrace();}
 
         return v;
     }
-
 
     /**
      * Search for an item by id
@@ -59,17 +55,16 @@ public class ItemDB extends bo.Item{
                 int i = rs.getInt("idItem");
                 String name = rs.getString("name");
                 String desc = rs.getString("desc");
-                int quantity = rs.getInt("quantity");
+                boolean inStorage = StorageDB.getStorageByItemId(i);
 
-                item = new ItemDB(i, name, desc,quantity);
+                item = new ItemDB(i, name, desc, inStorage);
             }
         } catch (SQLException e) {e.printStackTrace();}
 
         return item;
     }
 
-
-    private ItemDB(int id, String name, String desc, int quantity) {
-        super(id, name, desc, null,quantity);
+    private ItemDB(int id, String name, String desc, boolean inStorage) {
+        super(id, name, desc, null, inStorage);
     }
 }

@@ -5,7 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * A representation of an storage database
+ */
 public class StorageDB {
+
+    /**
+     * Search for a storage by item id
+     * @param id the item Id
+     * @return boolean
+     */
     public static boolean getStorageByItemId(int id) {
         boolean inStorage = false;
         try (Connection con = DBManager.getConnection()) {
@@ -24,6 +33,11 @@ public class StorageDB {
         return inStorage;
     }
 
+    /**
+     * Incrament quantity for a storage by item id
+     * @param id the item Id
+     * @return void
+     */
     public static void incramentById(int id) {
         try (Connection con = DBManager.getConnection()) {
             String sql = "UPDATE Storage SET quantity = quantity - 1 WHERE idItem ='"+id+"'";

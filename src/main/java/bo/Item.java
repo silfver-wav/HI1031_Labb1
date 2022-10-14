@@ -66,4 +66,8 @@ public class Item {
     public boolean getinStorage() {
         return inStorage;
     }
+
+    public void setQuantity(boolean inStorage) {
+        this.inStorage = inStorage;
+    }
 }

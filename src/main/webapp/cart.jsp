@@ -25,7 +25,7 @@
         <header>
           <!--Nav-->
           <div class="nav container">
-            <a href="index.jsp" class="logo">Panda Shop</a>
+            <a href="index.jsp" class="logo">Homepage</a>
           </div>
         </header>
 
@@ -38,7 +38,8 @@
               <%
                   session = request.getSession();
                   ShoppingCartInfo cart = (ShoppingCartInfo) session.getAttribute("cart");
-                  List<ItemInfo> items = cart.getItems();
+                  if (cart != null) {
+                    List<ItemInfo> items = cart.getItems();
                   if (items==null || items.isEmpty()) {
               %>
                     <div class="cart-product-title">The Cart Is Empty</div>
@@ -55,11 +56,15 @@
               </div>
               <!--Remove Cart-->
                 <form action="${pageContext.request.contextPath}/cart-servlet?action=REMOVE" method="post">
-                    <button type="submit" name="itemId" class="bx bxs-trash-alt cart-remove" value=<%=item.getId()%>></button>
+                    <button type="submit" name="id" class="bx bxs-trash-alt cart-remove" value=<%=item.getId()%>>
+                        <% session.setAttribute("Item",item); %>
+                    </button>
                 </form>
             </div>
             <% }
-            } %>
+                  }
+            }
+            %>
           </div>
           <!--Total-->
           <div class="total">

@@ -8,7 +8,6 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 /**
  * A representation of a login servlet
  */
@@ -24,7 +23,6 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         UserInfo user = UserHandler.getUser(username);
-        System.out.println("access: "+user.getAccess());
         if (user!=null) {
             if(password.equals(user.getPassword())) {
                 HttpSession session = request.getSession();
